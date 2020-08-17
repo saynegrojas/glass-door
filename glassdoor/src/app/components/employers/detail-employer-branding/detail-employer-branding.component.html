@@ -1,0 +1,95 @@
+<app-employer-nav></app-employer-nav>
+<div class="layout">
+  <div>
+    <h2>Details</h2>
+  </div>
+  <hr>
+  <div class="container">
+    <div class="card mb-5">
+      <div class="card-body">
+        <div class="card-title mb-3">
+          <h3 class="text-left">
+            Basic Info
+          </h3>
+        </div>
+        <form *ngIf="employer">
+          <div class="form-row">
+            <div class="col-md-12 mb-3">
+              <label for="company">Company</label>
+              <input type="text" #company="ngModel" name="company"
+                class="form-control" [(ngModel)]="employer.company"
+                disabled />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-12 mb-3">
+              <label for="workEmail">Work Email</label>
+              <input type="text" #workEmail="ngModel" name="workEmail"
+                class="form-control" [(ngModel)]="employer.workEmail"
+                disabled />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-6 mb-3">
+              <label for="firstName">First Name</label>
+              <input type="text" #firstName="ngModel" name="firstName"
+                class="form-control" [(ngModel)]="employer.firstName"
+                disabled />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="lastName">Last Name</label>
+              <input type="text" #lastName="ngModel" class="form-control"
+                name="lastName" [(ngModel)]="employer.lastName"
+                disabled />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="col-md-6 mb-3">
+              <label for="phoneNumber">Phone Number</label>
+              <input type="text" #phoneNumber="ngModel" class="form-control"
+                name="phoneNumber" [(ngModel)]="employer.phoneNumber"
+                disabled />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="job-role">Country</label>
+              <input type="text" class="form-control" #country="ngModel"
+                name="country" [(ngModel)]="employer.country"
+                disabled />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-6 mb-3">
+              <label for="jobTitle">Job Title</label>
+              <input type="text" class="form-control" #jobTitle="ngModel"
+                name="jobTitle" [(ngModel)]="employer.jobTitle"
+                disabled />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="jobOpening">Job Opening</label>
+              <input type="text" class="form-control" #jobOpening="ngModel"
+                name="jobOpening" [(ngModel)]="employer.jobOpening"
+                disabled />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-12 mb-3">
+              <label for="comments">Job Comments</label>
+              <input type="text" name="comments" class="form-control"
+                #comments="ngModel" [(ngModel)]="employer.comments"
+                disabled />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-4 mb-3 mt-3 back-button">
+              <button class="btn btn-success btn-md" (click)="onBack()">
+                Back to list
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <br />
+</div>

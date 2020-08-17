@@ -1,0 +1,342 @@
+<!-- <div class="row">
+    <div class="col-md-2 mb-3 mt-3">
+        <button class="btn btn-primary btn-sm" (click)="onBack()">
+            onclick
+            <i class="fas fa-arrow-left"></i>
+        </button>
+    </div>
+    <div class="col-md-8 mb-3"></div>
+    Needs to return to Login page not home
+    <div class="col-md-2 mb-3 mt-3 text-right">
+        <button class="btn btn-primary btn-sm" [routerLink]="['/home']">
+            Log out
+        </button>
+    </div>
+</div> -->
+<!-- hero section -->
+<app-employer-nav></app-employer-nav>
+<section class="hero">
+    <div class="image">
+        <div class="row mb-5">
+            <div class="col-md-12 text-center ">
+                <h3 class="title-1">Create</h3>
+            </div>
+        </div>
+        <hr class="solid">
+        <div class="row">
+            <div class="col-md-12 text-center title-2">
+                <h1>Employer Branding</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <div class="card-title">
+                <section class="mission">
+                    <div class="container">
+                        <div class="row ">
+                            <div class="col-md-12 text-center mission-statement">
+                                <h2>
+                                    Build your employer brand with glassdoor
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="text-center mb-5">
+                    <p class="require">All fields required</p>
+                </div>
+            </div>
+
+            <!-- ON click switch place holder to label -->
+            <form #empForm="ngForm" (ngSubmit)="onSubmit(empForm)"
+                novalidate *ngIf="empModel">
+
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5 mb-3">
+                        <label>First Name</label>
+                        <input type="text" #firstName="ngModel" required minlength="3"
+                            class="form-control" name="firstName"
+                            [class.is-invalid]="firstName.invalid && firstName.touched"
+                            [(ngModel)]="empModel.firstName"
+                            placeholder="" />
+                        <div *ngIf="firstName.touched && firstName.errors">
+                            <div class="alert alert-danger" *ngIf="firstName.errors.required">
+                                First name is required
+                            </div>
+                            <div class="alert alert-danger" *ngIf="firstName.errors.minlength">
+                                First Name should be at least 3 characters long
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 mb-3">
+                        <label>Last Name</label>
+                        <input type="text" #lastName="ngModel" required minlength="3"
+                            class="form-control" name="lastName"
+                            [class.is-invalid]="lastName.invalid && lastName.touched"
+                            [(ngModel)]="empModel.lastName"
+                            placeholder="" />
+                        <div *ngIf="lastName.touched && lastName.errors">
+                            <div class="alert alert-danger" *ngIf="lastName.errors.required">
+                                Last name is required
+                            </div>
+                            <div class="alert alert-danger" *ngIf="lastName.errors.minlength">
+                                Last Name should be at least 3 characters long
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+
+                </div>
+                <!-- company -->
+                <!-- your job title -->
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5 mb-3">
+                        <label>Company</label>
+                        <input type="text" #company="ngModel" required minlength="2"
+                            class="form-control" name="company"
+                            [class.is-invalid]="company.invalid && company.touched"
+                            [(ngModel)]="empModel.company"
+                        />
+                        <div *ngIf="company.touched && company.errors">
+                            <div class="alert alert-danger" *ngIf="company.errors.required">
+                                Company name is required
+                            </div>
+                            <div class="alert alert-danger" *ngIf="company.errors.minlength">
+                                Company Name must be at least 2 characters long
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 mb-3">
+                        <label>Your Job Title</label>
+                        <input type="text" #jobTitle="ngModel" required minlength="3"
+                            class="form-control" name="jobTitle"
+                            [class.is-invalid]="jobTitle.invalid && jobTitle.touched"
+                            [(ngModel)]="empModel.jobTitle"
+                            placeholder="" />
+                        <div *ngIf="jobTitle.touched && jobTitle.errors">
+                            <div class="alert alert-danger" *ngIf="jobTitle.errors.required">
+                                Last name is required
+                            </div>
+                            <div class="alert alert-danger" *ngIf="jobTitle.errors.minlength">
+                                Last Name should be at least 3 characters long
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+                <!-- duplicate email validation -->
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5 mb-3">
+                        <label for="workEmail">Work Email Address</label>
+                        <input type="email" #workEmail="ngModel" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                            class="form-control" name="workEmail"
+                            id="workEmail" [class.is-invalid]="workEmail.errors && workEmail.touched"
+                            [(ngModel)]="empModel.workEmail"
+                            placeholder="" />
+                        <div *ngIf="workEmail.touched && workEmail.errors">
+                            <div class="alert alert-danger" *ngIf="workEmail.errors.required">
+                                Work Email Address is required
+                            </div>
+                            <div class="alert alert-danger" *ngIf="workEmail.errors.pattern">
+                                Invalid email format (e.g. example@example.com)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5 mb-3">
+                        <label>Country</label>
+                        <select class="form-control custom-select" #country
+                            name="country" [(ngModel)]="empModel.country"
+                            (ngModelChange)="onEmployeeSelected($event)">
+
+                            <option *ngFor="let count of countries" [value]="count.name">
+                                {{count.name}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5 mb-3">
+                        <label>Phone Number</label>
+                        <input type="tel" #phoneNumber="ngModel" required pattern="^[0-9][0-9]{9}$"
+                            maxlength="10" minlength="10"
+                            class="form-control" name="phoneNumber"
+                            [class.is-invalid]="phoneNumber.invalid && phoneNumber.touched"
+                            [(ngModel)]="empModel.phoneNumber"
+                            placeholder="" />
+
+                        <div *ngIf="phoneNumber.touched && !phoneNumber.valid">
+                            <div class="alert alert-danger" *ngIf="phoneNumber.errors.required">
+                                Phone number is required.
+                            </div>
+                            <div class="alert alert-danger" *ngIf="phoneNumber.errors.pattern">
+                                Invaild Phone number
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 mb-3">
+                        <label># of Open Jobs</label>
+                        <select class="form-control custom-select" #jobOpening
+                            required name="jobOpening"
+                            [(ngModel)]="empModel.jobOpening"
+                            placeholder="# of Open Jobs">
+                            <option *ngFor="let open of openings" [value]="open.opening">{{open.opening}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10 mb-3">
+                        <label>Comments</label>
+                        <textarea class="form-control" maxlength="50" #comments="ngModel"
+                            name="comments" [(ngModel)]="empModel.comments"
+                            [class.is-invalid]="comments.invalid && comments.touched"
+                            placeholder="What specific hiring challenges are you looking to address with glassdoor? "
+                            rows="3"></textarea>
+                        <div *ngIf="comments.touched && !comments.valid">
+                            <div class="alert alert-danger" *ngIf="comments.errors.maxlength">
+                                Maximum characters limit reached
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12 mb-4 mt-3 text-center policy">
+                        <small>
+                            I confirm I represent HR, Recruiting, Marketing, PR,
+                            or am an executive at my
+                            company and I agree to
+                            glassdoor's Terms of Service
+                            and Privacy Policy on behalf
+                            of my company.
+                        </small>
+                    </div>
+                </div>
+                <div class="text-center mb-2 mt-2">
+                    <button class="btn btn-success col-md-2 submit-btn"
+                        type="submit" [disabled]="empForm.form.invalid"
+                        data-toggle="modal" data-target="#addedModal">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br />
+    <div class="modal fade" id="addedModal" tabindex="-1"
+        role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h5 class="card-title" id="exampleModalLabel">New Employer Brand Added</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-row mb-2">
+                            <div class="col-md-3">
+                                <label>Name: </label>
+                            </div>
+                            <div class="col-md-9">
+                                <p class="card-text" *ngIf="employers">
+                                    {{ employers.firstName }} {{ employers.lastName }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-3">
+                                <label>Company: </label>
+                            </div>
+                            <div class="col-md-9">
+                                <p class="card-text" *ngIf="employers">
+                                    {{ employers.company}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-3">
+                                <label>Job Title: </label>
+                            </div>
+                            <div class="col-md-9">
+                                <p class="card-text" *ngIf="employers">
+                                    {{ employers.jobTitle}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-row mb-2">
+                            <div class="col-md-3">
+                                <label>Work Email: </label>
+                            </div>
+                            <div class="col-md-9">
+                                <p class="card-text" *ngIf="employers">
+                                    {{ employers.workEmail}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-row mb-2">
+                            <div class="col-md-3">
+                                <label>Country: </label>
+                            </div>
+                            <div class="col-md-9">
+                                <p class="card-text" *ngIf="employers">
+                                    {{ employers.country}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-3">
+                                <label>Phone: </label>
+                            </div>
+                            <div class="col-md-9">
+                                <p class="card-text" *ngIf="employers">
+                                    {{ employers.phoneNumber}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-row mb-2">
+                            <div class="col-md-3">
+                                <label>Job Opening: </label>
+                            </div>
+                            <div class="col-md-9">
+                                <p class="card-text" *ngIf="employers">
+                                    {{ employers.jobOpening}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-row mb-2">
+                            <div class="col-md-3">
+                                <label>Comments: </label>
+                            </div>
+                            <div class="col-md-9">
+                                <p class="card-text" *ngIf="employers">
+                                    {{ employers.comments}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="text-right modal-footer">
+                            <div class="text-right">
+                                <button type="button" class="btn btn-success" data-dismiss="modal"
+                                    [routerLink]="['/employers/employer-branding']">
+                                    <!-- redirect to list of jobs -->
+                                    OK
+
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="modal-footer"> -->
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

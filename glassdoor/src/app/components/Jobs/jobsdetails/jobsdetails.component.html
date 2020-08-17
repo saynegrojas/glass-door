@@ -1,0 +1,20 @@
+<h2 class="ml-5" style="margin-bottom:20px;">Job Detail</h2>
+<!-- <p>Job ID: {{id}}</p> -->
+<div class="container">
+  <div class="card">
+    <div class="card-body" *ngIf="job">
+      <p>Job Title: {{job.Job_Title}}</p>
+      <p>Job Description: {{job.Job_Description}} </p>
+      <p>Company Name: {{job.Company_Name}} </p>
+      <p>Salary: {{job.Salary}} </p>
+      <p>Job Type: {{job.Job_Type}} </p>
+      <p>Posted Date: {{job.Poste_Date | date:'medium'}}
+      </p>
+      <p>Job Deadline: {{job.App_Deadeline | date:'medium'}}
+      </p>
+      <div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-success mt-3" (click)="goBack()">Go Back</button>
+</div>

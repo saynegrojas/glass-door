@@ -1,0 +1,66 @@
+.mainbox {
+    background-color: rgb(91, 207, 91);
+    margin: auto;
+    height: 500px;
+    width: 500px;
+    position: relative;
+    padding-right: 10px;
+  }
+  
+    .err {
+      color: #ffffff;
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 11rem;
+      position:absolute;
+      left: 15%;
+      top: 8%;
+    }
+  
+  .far {
+    position: absolute;
+    font-size: 8.5rem;
+    left: 38%;
+    top: 20%;
+    color: #ffffff;
+  }
+  
+   .err2 {
+      color: #ffffff;
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 11rem;
+      position:absolute;
+      left: 66%;
+      top: 8%;
+    }
+  
+  .msg {
+      text-align: center;
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 1.2rem;
+      position:absolute;
+      left: 14%;
+      top: 50%;
+      width: 75%;
+    }
+  
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  .card-title {
+    background-color: white;
+    color: rgb(91, 207, 91);
+    padding: 10px;
+    height: 10vh;
+
+}
+.card-body {
+    padding: 0 0 5rem 0;
+}
+.text-center {
+    line-height: 2.8;
+}
