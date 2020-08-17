@@ -1,0 +1,113 @@
+.hero {
+    height: 40vh;
+    position: relative;
+    width: 100%;
+    margin: 0;
+}
+.image {
+    background-color: black;
+    background-image: linear-gradient(
+        rgba(11, 58, 146, 0.733), 
+        rgba(11, 58, 146, 0.733)
+      ), url('../../../../assets/emp-brand.jpg');
+    background-repeat: no-repeat;  
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.title-1, .title-2 {
+    color: white;
+}
+.title-1, h3 {
+    font-weight: 300;
+    position: absolute;
+    top: 45px;
+    left: 50%;
+    transform: translate(-50%, -5px);
+}
+.title-2, h1 {
+    line-height: 0;
+    position: absolute;
+    left: 18%;
+    width: 65%;
+    top: 60%;
+}
+/* .h3, h3{
+    line-height: 2;
+} */
+.mission-statement {
+    color: black;
+}
+.card {
+    border-color: transparent;
+}
+.mission {
+    height: 20vh;
+}
+section, .require {
+    display: flex;
+    align-items: center;
+}
+hr.solid {
+    border: 3px solid rgb(91, 207, 91);
+    width: 60px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+}
+.require {
+    font-style: italic;
+    font-size: 1.2rem;
+    color:#7f7f7f;
+    margin-bottom: 0;
+    position: absolute;
+    left: 50%;
+    top: 19%;
+    transform: translate(-50%, -19%);
+}
+.submit-btn {
+    border-radius: 2px;
+}
+label {
+    color: #7f7f7f;
+    font-size: 12px;
+    line-height: 16px;
+}
+.policy {
+    padding: 0 95px 0 95px;
+}
+/* .form-row {
+    position: relative;
+}
+.form-row label {
+    position: absolute;
+    bottom: 0px;
+    left: 19px;
+    width: 100%;
+    height: 100%;
+    background-color: blue;
+    pointer-events: none;
+}
+.form-row label::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.content-name {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    transition: all 0.3s ease;
+}
+.form-row input:focus + .label-name .content-name {
+    transform: translateY(-150%)
+}
+.label-name::after + .content-name::after {
+    content: '';
+    left: -99999999px;
+} */

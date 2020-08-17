@@ -1,0 +1,110 @@
+.hero {
+    background-image:  linear-gradient(
+        rgba(124, 124, 124, 0.45), 
+        rgba(124, 124, 124, 0.45)
+      ),url('../../../../assets/emp-front.jpg');
+    background-repeat: no-repeat;  
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+    width: 100%;
+    margin: auto;
+}
+.title-1, h3{
+    color: white;
+    position: absolute;
+    top: 18%;
+    left: 7%;
+    width: 50%;
+    transform: translate(3px, 0);
+}
+.title-2 {
+    color: white;
+    position: absolute;
+    top: 35%;
+    left: 10%;
+    margin-top: 0;
+    font-size: 3rem;
+    line-height: 0;
+}
+.title-3 {
+    color: white;
+    position: absolute;
+    top: 60%;
+    left: 10%;
+}
+.card {
+    border-color: transparent;
+}
+section, .require {
+    display: flex;
+    align-items: center;
+}
+hr.solid {
+    border: 3px solid rgb(91, 207, 91);
+    width: 70px;
+    position: absolute;
+    top: 24%;
+    left: 11%;
+}
+.w-100 {
+    width: 75% !important;
+    align-items: center;
+    position: relative;
+    left: 13%;
+    top: 0%;
+}
+.outerList {
+    text-align: center;
+    /* background: red; */
+    height: 45vh;
+    margin-top: 30px;
+    padding-top: 10px;
+    list-style-type: none;
+    cursor: pointer;
+}
+.list-title {
+    color: rgb(91, 207, 91);
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 300;
+    padding-right: 46px;
+}
+.carousel-indicators {
+    bottom: -50px;
+    width: 100%;
+}
+.innerList {
+    text-align: left;
+    /* margin-bottom: 5px; */
+    list-style-type: disc;
+}
+.innerList, li {
+    color: gray;
+    line-height: 2;
+    margin-bottom: 10px;
+}
+.mission-statement {
+    color: black;
+}
+.card {
+    border-color: transparent;
+}
+.mission {
+    height: 15vh;
+}
+section, .require {
+    display: flex;
+    align-items: center;
+}
+p {
+    margin-bottom: 0;
+    font-size: 1.2rem;
+    position: absolute;
+    left: 50%;
+    top: 12%;
+    transform: translate(-50%, -12%);
+}
+.btn-lg {
+    border-radius: 2px;
+}

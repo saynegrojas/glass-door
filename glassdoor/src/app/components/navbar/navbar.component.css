@@ -1,0 +1,14 @@
+.navbar-brand {
+    font-size: bold;
+    color: rgb(91, 207, 91);
+    cursor: pointer;
+}
+.nav-brand, span {
+    color: black;
+}
+.btn-group-lg>.btn, .btn-lg {
+    border-radius: 2px;
+}
+.navbar-light .navbar-nav .active>.nav-link {
+    padding-right: 2.5rem;
+}

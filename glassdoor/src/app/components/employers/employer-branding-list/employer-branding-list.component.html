@@ -1,0 +1,58 @@
+<app-employer-nav></app-employer-nav>
+<section class="hero">
+    <div class="image">
+        <div class="row mb-5">
+            <div class="col-md-12 text-center ">
+                <h3 class="title-1">List</h3>
+            </div>
+        </div>
+        <hr class="solid">
+        <div class="row">
+            <div class="col-md-12 text-center title-2">
+                <h1>Employer Branding Selection</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <div class="card-title">
+                <section class="mission">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 text-center mission-statement">
+                                <h4>
+                                    Look through a selection of employer brandings
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="card-header">
+                <div class="form-group col-md-4 mt-3">
+                    <input type="text" class="form-control" placeholder="Search company"
+                        [(ngModel)]="listFilter" />
+                </div>
+            </div>
+            <div class="container">
+                <div class="row card-box" *ngIf="employers && employers.length">
+                    <div class="col-md-4 mx-auto my-3 mr-2 ml-2" *ngFor="let employer of filterEmployers"
+                        (click)="goDetails(employer)">
+                        <a class="card card-bod" (click)="cardClick()">
+                            <div class="card-body">
+                                <div class="card-title" title="Click for details" class="hover-shadow">
+                                    <strong>{{employer.company}}</strong>
+                                </div>
+                                <p>
+                                    {{employer.jobTitle}}
+                                </p>
+                                <p>
+                                    {{employer.country}}
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>

@@ -1,0 +1,115 @@
+<div class="container-fluid">
+    <br />
+    <h2>Edit Job</h2>
+    <div>
+        <form *ngIf="editjobForm" [formGroup]="editjobForm"
+            (ngSubmit)="update(jobID, job)" novalidate>
+            <div class="form-group">
+
+                <div class="col-md-7 mb-3">
+                    <label>Job Title</label>
+                    <input type="text" [class.is-invalid]="Job_Title.invalid && Job_Title.touched"
+                        formControlName="Job_Title" class="form-control">
+                    <div *ngIf="Job_Title.errors && Job_Title.touched">
+                        <div class="alert alert-danger" *ngIf="Job_Title.errors?.required">Title is required</div>
+                        <div class="alert alert-danger" *ngIf="Job_Title.errors?.minlength">Title must be at least 3 characters</div>
+                    </div>
+                </div>
+
+
+                <!-- <input type="text" [class.is-invalid]="Job_Location.invalid && Job_Location.touched" 
+                formControlName="Job_Location" class="form-control">
+                    <div *ngIf="Job_Location.errors && Job_Location.touched">
+                      <div class="alert alert-danger" *ngIf="Job_Location.errors?.required">Location is required</div>
+                      <div class="alert alert-danger" *ngIf="Job_Location.errors?.minlength">Location must be at least 3 characters</div>
+                    </div> -->
+
+                <div class="col-md-7 mb-3">
+                    <label>Job Location</label>
+                    <select class="form-control custom-select" formControlName="Job_Location">
+
+                        <option *ngFor="let count of state" [value]="count.state">
+                            {{count.state}}</option>
+                    </select>
+                </div>
+
+
+                <div class="col-md-7 mb-3">
+                    <label>Job Description</label>
+                    <input type="text" [class.is-invalid]="Job_Description.invalid && Job_Description.touched"
+                        formControlName="Job_Description"
+                        class="form-control">
+                    <div *ngIf="Job_Description.errors && Job_Description.touched">
+                        <div class="alert alert-danger" *ngIf="Job_Description.errors?.required">Description is required</div>
+                        <div class="alert alert-danger" *ngIf="Job_Description.errors?.minlength">Description must be at least
+                            3 characters</div>
+                    </div>
+                </div>
+
+                <div class="col-md-7 mb-3">
+                    <label>Salary</label>
+                    <input type="number" [class.is-invalid]="Salary.invalid && Salary.touched"
+                        formControlName="Salary" class="form-control">
+                    <div *ngIf="Salary.errors && Salary.touched">
+                        <div class="alert alert-danger" *ngIf="Salary.errors?.required">Salary is required</div>
+                        <div class="alert alert-danger" *ngIf="Salary.errors?.minlength"></div>
+                    </div>
+                </div>
+
+                <div class="col-md-7 mb-3">
+                    <label>Company Name</label>
+                    <select class="form-control custom-select" formControlName="Company_Name">
+
+                        <option *ngFor="let emp of empBrands" [value]="emp.company">
+                            {{emp.company}}</option>
+                    </select>
+                </div>
+                <div class="col-md-7 mb-3">
+                    <label>Job Type</label>
+
+                    <select class="form-control custom-select" formControlName="Job_Type">
+                        <option *ngFor="let count of type" [value]="count.type">
+                            {{count.type}}</option>
+                    </select>
+                </div>
+
+                <!-- <input type="text" [class.is-invalid]="Job_Type.invalid && Job_Type.touched" 
+                formControlName="Job_Type" class="form-control">
+                    <div *ngIf="Job_Type.errors && Job_Type.touched">
+                        <div class="alert alert-danger" *ngIf="Job_Type.errors?.required">Company name is required</div>
+                        <div class="alert alert-danger" *ngIf="Job_Type.errors?.minlength">Company name must be at least 3 characters</div>
+                    </div>
+                </div> -->
+                <div class="col-md-7 mb-3">
+                    <label>Posted Date</label>
+                    <input type="text" [class.is-invalid]="Poste_Date.invalid && Poste_Date.touched"
+                        formControlName="Poste_Date" class="form-control"
+                        disabled>
+                    <div *ngIf="Poste_Date.errors && Poste_Date.touched">
+                        <div class="alert alert-danger" *ngIf="Poste_Date.errors?.required">Posted Date is required</div>
+                        <div class="alert alert-danger" *ngIf="Poste_Date.errors?.minlength"></div>
+                    </div>
+                </div>
+
+                <div class="col-md-7 mb-3">
+                    <label>Deadline Date</label>
+                    <input type="date" [class.is-invalid]="App_Deadeline.invalid && App_Deadeline.touched"
+                        formControlName="App_Deadeline"
+                        class="form-control">
+                    <div *ngIf="App_Deadeline.errors && App_Deadeline.touched">
+                        <div class="alert alert-danger" *ngIf="App_Deadeline.errors?.required">Phone is required</div>
+                        <div class="alert alert-danger" *ngIf="App_Deadeline.errors?.minlength">Phone must be at least 3 characters</div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" [disabled]="!editjobForm.valid"
+                    type="submit">Submit form</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="alert alert-danger" *ngIf="errorMsg">
+        {{errorMsg}}
+    </div>
+
+</div>

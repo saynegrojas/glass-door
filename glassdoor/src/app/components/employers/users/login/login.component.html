@@ -1,0 +1,137 @@
+<!-- <div id="layoutAuthentication_footer">
+    <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center justify-content-between small">
+                <div class="text-muted">Copyright &copy; Your Website
+                    2020
+                </div>
+                <div>
+                    <a href="#">Privacy Policy</a>
+                    &middot;
+                    <a href="#">Terms &amp; Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div> -->
+
+<!-- <h2 class="page-header">Login</h2>
+<form (ngSubmit)="onLoginSubmit()">
+    <div class="form-group">
+        <label>Work Email</label>
+        <input type="text" class="form-control" [(ngModel)]="workEmail"
+            name="workEmail">
+    </div>
+    <div class="form-group">
+        <label>Password</label>
+        <input type="password" class="form-control" [(ngModel)]="password"
+            name="password">
+    </div>
+    <input type="submit" class="btn btn-primary" value="Login">
+</form> -->
+
+<!-- 
+    #workEmail="ngModel" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+    [class.is-invalid]="workEmail.errors && workEmail.touched"
+    [(ngModel)]="regModel.workEmail"
+ -->
+<!-- <section class="hero">
+    <div class="image">
+        <div class="row mb-5">
+            <div class="col-md-12 text-center ">
+                <h3 class="text-center title-1">Sign Up</h3>
+            </div>
+        </div>
+        <hr class="solid">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="text-center title-2">Bring your company's story to life</h1>
+            </div>
+        </div>
+    </div>
+</section> -->
+<app-employer-nav></app-employer-nav>
+
+<div class="main">
+    <section class="mission">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-12 text-center mission-statement">
+                    <h3>
+                        Sign in
+                    </h3>
+                </div>
+                <div class="col-md-12 text-center mt-3 policy">
+                    <p>
+                        By continuing, you agree to our Terms of Use and Privacy
+                        Policy.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="input-main">
+        <div class="card input-section">
+            <div class="card-body input-body">
+                <form (ngSubmit)="onLoginSubmit()">
+
+                    <div class="form-row">
+                        <!-- <div class="col-md-3"></div> -->
+                        <div class="col-md-8 mb-3 mt-3 email">
+                            <label for="workEmail">Work Email Address</label>
+                            <input type="email" id="workEmail" class="form-control"
+                                name="workEmail" [(ngModel)]="workEmail"
+                            />
+                            <!-- <div *ngIf="workEmail.touched && workEmail.errors">
+                <div class="alert alert-danger" *ngIf="workEmail.errors.required">
+                    Work Email Address is required
+                </div>
+                <div class="alert alert-danger" *ngIf="workEmail.errors.pattern">
+                    Invalid email format (e.g. example@example.com)
+                </div>
+            </div> -->
+                        </div>
+                        <!-- <div class="col-md-3"></div> -->
+                    </div>
+                    <!-- 
+            #password="ngModel" required
+        minlength="4" [class.is-invalid]="password.errors && password.touched"
+        [(ngModel)]="regModel.password"
+        -->
+                    <div class="form-row">
+                        <!-- <div class="col-md-2"></div> -->
+                        <div class="col-md-8 mb-3 pw">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" name="password"
+                                id="password" [(ngModel)]="password"
+                            />
+                            <!-- <div *ngIf="password.touched && password.errors">
+                <div class="alert alert-danger" *ngIf="password.errors.required">
+                    Password is required
+                </div>
+                <div class="alert alert-danger" *ngIf="password.errors.minlength">
+                    Password must be at least 4 characters long
+                </div>
+            </div> -->
+                        </div>
+                        <!-- <div class="col-md-2"></div> -->
+                    </div>
+                    <!-- <input type="submit" class="btn btn-primary" value="Login"> -->
+                    <div class="text-center mb-2 mt-3">
+                        <input class="btn btn-success col-md-3 submit-btn"
+                            type="submit" value="Sign in">
+                    </div>
+                </form>
+            </div>
+            <div class="text-center mb-5">
+                <p>
+                    Need an account?
+                    <a [routerLink]="['/employers/register']">
+                        Sign up!</a>
+                </p>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>

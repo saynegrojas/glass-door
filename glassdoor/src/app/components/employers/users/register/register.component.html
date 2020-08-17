@@ -1,0 +1,219 @@
+<app-employer-nav></app-employer-nav>
+
+<section class="hero">
+    <div class="image">
+        <div class="row mb-5">
+            <div class="col-md-12 text-center ">
+                <h3 class="text-center title-1">Sign Up</h3>
+            </div>
+        </div>
+        <hr class="solid">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="text-center title-2">Bring your company's story to life</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="mission">
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-12 text-center mission-statement">
+                <h4>
+                    Our candidate's research company reviews and apply
+                    to the jobs that are the right
+                    fit for them.
+                </h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ON click switch place holder to label -->
+<div class="input-main">
+    <div class="card input-section">
+        <div class="card-body input-body">
+            <form #empForm="ngForm" (ngSubmit)="onRegisterSubmit(empForm)">
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5 mb-3">
+                        <label>First Name</label>
+                        <input type="text" #firstName="ngModel" required minlength="3"
+                            class="form-control" name="firstName"
+                            [class.is-invalid]="firstName.invalid && firstName.touched"
+                            [(ngModel)]="regModel.firstName"
+                        />
+                        <div *ngIf="firstName.touched && firstName.errors">
+                            <div class="alert alert-danger" *ngIf="firstName.errors.required">
+                                First name is required
+                            </div>
+                            <div class="alert alert-danger" *ngIf="firstName.errors.minlength">
+                                First Name should be at least 3 characters long
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 mb-3">
+                        <label>Last Name</label>
+                        <input type="text" #lastName="ngModel" required minlength="3"
+                            class="form-control" name="lastName"
+                            [class.is-invalid]="lastName.invalid && lastName.touched"
+                            [(ngModel)]="regModel.lastName"
+                        />
+                        <div *ngIf="lastName.touched && lastName.errors">
+                            <div class="alert alert-danger" *ngIf="lastName.errors.required">
+                                Last name is required
+                            </div>
+                            <div class="alert alert-danger" *ngIf="lastName.errors.minlength">
+                                Last Name should be at least 3 characters long
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10 mb-3">
+                        <label for="company">Company</label>
+                        <input type="text" #company="ngModel" required minlength="2"
+                            [class.is-invalid]="company.invalid && company.touched"
+                            class="form-control" name="company"
+                            id="company" [(ngModel)]="regModel.company"
+                        />
+                        <div *ngIf="company.touched && company.errors">
+                            <div class="alert alert-danger" *ngIf="company.errors.required">
+                                Company name is required
+                            </div>
+                            <div class="alert alert-danger" *ngIf="company.errors.minlength">
+                                Company Name must be at least 2 characters long
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+                <!-- JOB TITLE #OPEN JOBS -->
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-7 mb-3">
+                        <label for="jobTitle">Official Job Title</label>
+                        <input type="text" #jobTitle="ngModel" required minlength="3"
+                            [class.is-invalid]="jobTitle.invalid && jobTitle.touched"
+                            class="form-control" name="jobTitle"
+                            id="jobTitle" [(ngModel)]="regModel.jobTitle"
+                        />
+                        <div *ngIf="jobTitle.touched && jobTitle.errors">
+                            <div class="alert alert-danger" *ngIf="jobTitle.errors.required">
+                                Last name is required
+                            </div>
+                            <div class="alert alert-danger" *ngIf="jobTitle.errors.minlength">
+                                Last Name should be at least 3 characters long
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="jobOpening"># of Open Jobs</label>
+                        <select type="text" required class="form-control custom-select"
+                            name="jobOpening" id="jobOpening"
+                            [(ngModel)]="regModel.jobOpening">
+                            <option *ngFor="let open of openings" [value]="open.opening">{{open.opening}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+
+                <!-- EMAIL PASSWORD -->
+                <div class="form-row">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-5 mb-3">
+                        <label for="workEmail">Work Email Address</label>
+                        <input type="email" #workEmail="ngModel" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                            id="workEmail" [class.is-invalid]="workEmail.errors && workEmail.touched"
+                            class="form-control" name="workEmail"
+                            id="workEmail" [(ngModel)]="regModel.workEmail"
+                        />
+                        <div *ngIf="workEmail.touched && workEmail.errors">
+                            <div class="alert alert-danger" *ngIf="workEmail.errors.required">
+                                Work Email Address is required
+                            </div>
+                            <div class="alert alert-danger" *ngIf="workEmail.errors.pattern">
+                                Invalid email format (e.g. example@example.com)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 mb-3">
+                        <label for="password">Password</label>
+                        <input type="password" #password="ngModel" required
+                            minlength="4" [class.is-invalid]="password.errors && password.touched"
+                            class="form-control" name="password"
+                            id="password" [(ngModel)]="regModel.password"
+                        />
+                        <div *ngIf="password.touched && password.errors">
+                            <div class="alert alert-danger" *ngIf="password.errors.required">
+                                Password is required
+                            </div>
+                            <div class="alert alert-danger" *ngIf="password.errors.minlength">
+                                Password must be at least 4 characters long
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+
+
+                <div class="form-row">
+                    <div class="col-md-12 mb-4 mt-3 text-center policy">
+                        <small>
+                            By creating an account, I confirm I represent HR, Recruiting,
+                            Marketing, PR, or am an
+                            executive at my company
+                            and I agree to glassdoor's
+                            Terms of Service and Privacy
+                            Policy on behalf of my
+                            company.
+                        </small>
+                    </div>
+                </div>
+                <div class="text-center mb-2 mt-2">
+                    <input class="btn btn-success col-md-4 submit-btn"
+                        type="submit" value="Create Account"
+                        data-toggle="modal" data-target="#addedModal"
+                        [disabled]="empForm.form.invalid">
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="container text-center">
+        <div class="small">
+            Already have an account?
+            <a [routerLink]="['/employers/login']">
+                Sign in</a>
+        </div>
+    </div>
+    <br />
+</div>
+<div class="modal fade" id="addedModal" tabindex="-1"
+    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h5 class="card-title" id="exampleModalLabel">Registration Successful</h5>
+                </div>
+
+                <div class="text-center modal-footer">
+                    <div class="text-center">
+                        <button type="button" class="btn btn-success" data-dismiss="modal"
+                            [routerLink]="['/employers/login']">
+                            <!-- redirect to list of jobs -->
+                            Log in
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="modal-footer"> -->
+            <!-- </div> -->
+        </div>
+    </div>
+</div>

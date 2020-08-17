@@ -1,0 +1,106 @@
+<!-- Fixed navbar
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="btn btn-success" data-toggle="collapse"
+        data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" routerLink="/">Glassdoor Reviews</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+          <a routerLink="/">Home</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a *ngIf="authService.loggedIn()" routerLink="/profile">Profile</a>
+        </li>
+        <li>
+          <a *ngIf="authService.loggedIn()" routerLink="/review">Review</a>
+        </li>
+        <li>
+          <a *ngIf="!authService.loggedIn()" routerLink="/login">Login</a>
+        </li>
+        <li>
+          <a *ngIf="authService.loggedIn()" (click)="onLogoutClick()">Logout</a>
+        </li>
+        <li *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact:true}">
+          <a routerLink="/register">Register</a>
+        </li>
+      </ul>
+    </div>
+  /.nav-collapse
+  </div>
+</nav> -->
+
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand ml-4" (click)="onBack()">
+    <h4>glassdoor</h4>
+    <span>
+      <small>for Employers</small>
+    </span>
+  </a>
+  <button class="navbar-toggler justify-content-end"
+    type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+    aria-controls="navbarNavDropdown" aria-expanded="false"
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end mr-3"
+    id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown active">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+          data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          Our Products
+          <span class="sr-only">(current)</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" [routerLink]="['/employers/employer-branding']">Employer Brand</a>
+          <a class="dropdown-item" [routerLink]="['/employers/jobs']">Jobs & Recruitment</a>
+          <a class="dropdown-item" [routerLink]="['']">Reviews</a>
+          <a class="dropdown-item" (click)="onLogoutClick()"
+            *ngIf="authService.loggedIn()">
+            Log out
+          </a>
+        </div>
+      </li>
+      <li class="nav-item dropdown active">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+          data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          What we do
+          <span class="sr-only">(current)</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" [routerLink]="['/about']">
+            About
+          </a>
+          <a class="dropdown-item" *ngIf="!authService.loggedIn()"
+            routerLink="/register">
+            Register
+          </a>
+          <a class="dropdown-item" *ngIf="authService.loggedIn()"
+            [routerLink]="['/review']">
+            Review List
+          </a>
+        </div>
+      </li>
+    </ul>
+    <button type="button" class="btn btn-md btn-outline-success"
+      *ngIf="!authService.loggedIn()" [routerLink]="['/login']">Member sign in
+    </button>
+    <div class=" ml-1 mr-2">
+      <app-profile></app-profile>
+    </div>
+  </div>
+</nav> -->
+<h1>nav</h1>

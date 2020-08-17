@@ -1,0 +1,116 @@
+<!-- <nav class="navbar navbar-expand-lg navbar-light ftco_navbar bg-light ftco-navbar-success"
+  id="ftco-navbar">
+  <div class="container">
+    <a class="navbar-brand" style="color:green; font-style: oblique; font-size: 20px;"
+      href="index.html">Glassdoor</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+      data-target="#ftco-nav" aria-controls="ftco-nav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="oi oi-menu"></span> Menu
+    </button>
+
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="about.html" class="nav-link">About</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/employers/jobs"
+            routerLinkActive="active">Jobs</a>
+        </li>
+        <li class="nav-item cta mr-md-1">
+          <a class="nav-link active" routerLink="/employers/jobs/createjob"
+            routerLinkActive="active">Post a Job</a>
+        </li>
+        <li class="nav-item cta cta-colored">
+          <a class="nav-link active" routerLink="/employers/jobs/joblist"
+            routerLinkActive="active">Job List</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav> -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand ml-4" (click)="onBack()">
+    <h4>glassdoor</h4>
+    <span>
+      <small>for Employers</small>
+    </span>
+  </a>
+  <button class="navbar-toggler justify-content-end"
+    type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+    aria-controls="navbarNavDropdown" aria-expanded="false"
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end"
+    id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown active">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+          data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          Products
+          <span class="sr-only">(current)</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" [routerLink]="['/employers/employer-branding']">Employer Brand</a>
+          <a class="dropdown-item" [routerLink]="['/employers/jobs']">Jobs & Recruitment</a>
+          <a class="dropdown-item" href="#">Reviews</a>
+          <a class="dropdown-item" (click)="onLogoutClick()"
+            *ngIf="authService.loggedIn()">
+            Logout
+          </a>
+        </div>
+      </li>
+      <li class="nav-item dropdown active">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+          data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          What we do
+          <span class="sr-only">(current)</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <!-- <a class="dropdown-item" [routerLink]="['/employers/about']">
+                        About
+                    </a>
+                    <a class="dropdown-item" [routerLink]="['/employers/employer-branding/create']"
+                        (click)="goCreate()" *ngIf="authService.loggedIn()">
+                        Create Employer Branding
+                    </a>
+                    <a class="dropdown-item" [routerLink]="['/employers/employer-branding/list']"
+                        *ngIf="authService.loggedIn()">
+                        Employer Brandings
+                    </a> -->
+          <a class="dropdown-item" [routerLink]="['/about']">
+            About
+          </a>
+          <a class="dropdown-item" [routerLink]="['/employers/jobs']"
+            *ngIf="authService.loggedIn()">
+            Jobs
+          </a>
+          <a class="dropdown-item" [routerLink]="['/employers/jobs/joblist']"
+            *ngIf="authService.loggedIn()">
+            Job List
+          </a>
+          <a class="dropdown-item" [routerLink]="['/employers/jobs/createjob']"
+            *ngIf="authService.loggedIn()">
+            Post a Job
+          </a>
+          <!-- <a class="dropdown-item" [routerLink]="['employers/employer-branding/details/:id']">Employer Detail</a> -->
+        </div>
+      </li>
+    </ul>
+    <!-- <button type="button" class="btn btn-md btn-outline-success"
+      *ngIf="!authService.loggedIn()" [routerLink]="['/employers/login']">Sign in
+    </button> -->
+    <div class=" ml-1 mr-2">
+      <app-jobsprofile></app-jobsprofile>
+    </div>
+  </div>
+</nav>
