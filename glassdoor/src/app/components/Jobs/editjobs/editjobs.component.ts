@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { JobService } from '../job.service'
-import { JobTypes } from '../../../jobtypes';
-import { States } from '../../../states';
+import { JobService } from '../../../services/job.service'
+import { JobTypes } from '../../Jobs/models/jobtypes';
+import { States } from '../../Jobs/models/states';
 import { EmployerService } from '../../../services/employer-service/employer.service';
 
 @Component({

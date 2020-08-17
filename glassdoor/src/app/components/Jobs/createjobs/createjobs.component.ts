@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { JobService } from '../job.service';
+import { JobService } from '../../../services/job.service';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup, NgForm } from '@angular/forms';
-import { States } from '../../../states'
-import { JobTypes } from '../../../jobtypes';
+import { States } from '../../Jobs/models/states'
+import { JobTypes } from '../../Jobs/models/jobtypes';
 import { EmployerService } from '../../../services/employer-service/employer.service'
 @Component({
   selector: 'app-createjobs',

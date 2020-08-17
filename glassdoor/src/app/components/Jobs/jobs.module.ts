@@ -19,7 +19,7 @@ import { JobsnavComponent } from './jobsnav/jobsnav.component';
 // import { EmployerNavComponent } from '../employers/employer-nav/employer-nav.component';
 
 // services
-import { JobService } from './job.service';
+import { JobService } from '../../services/job.service';
 import { EmployerService } from '../../services/employer-service/employer.service';
 import { AuthService } from '../../services/employer-service/auth.service';
 import { AuthGuard } from '../../services/employer-service/auth.guard';

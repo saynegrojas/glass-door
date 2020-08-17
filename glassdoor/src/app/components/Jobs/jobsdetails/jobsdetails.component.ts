@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { JobService } from '../job.service';
+import { JobService } from '../../../services/job.service';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 
 @Component({

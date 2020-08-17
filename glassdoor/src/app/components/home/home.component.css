@@ -1,4 +1,4 @@
-/* .home-title {
+.home-title {
     font-weight: bold;
     color: rgb(91, 207, 91);
     cursor: pointer;
@@ -45,7 +45,7 @@
 } */
 
 /* Section 2 */
-/* .hero-2 {
+.hero-2 {
     height: 80vh;
     position: relative;
     width: 100%;
@@ -90,9 +90,9 @@
 }
 .row {
     width: 100%;
-} */
+}
 /* Section 3 */
-/* .hero-3 {
+.hero-3 {
     height: 100vh;
     min-height: 90vh;
     position: relative;
@@ -133,10 +133,10 @@
     width: 50%;
     text-align: left;
     line-height: 1.8;
-} */
+}
 
 /* Section 4 */
-/* .hero-4 {
+.hero-4 {
     height: 70vh;
     min-height: 70vh;
     position: relative;
@@ -182,11 +182,11 @@
     top: 100px;
     border-radius: 2px;
     left: 34%;
-} */
+}
 
 /* Multi-use */
 
-/* span {
+span {
     color: white;
 }
 
@@ -195,4 +195,4 @@
     top: 330px;
     border-radius: 2px;
     left: -15%;
-} */
+}

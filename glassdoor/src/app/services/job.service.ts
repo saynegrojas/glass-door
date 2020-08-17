@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IJobs } from '../../modules/jobs';
+import { IJobs } from '../../app/components/Jobs/models/jobs';
 import { HttpErrorResponse, HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
