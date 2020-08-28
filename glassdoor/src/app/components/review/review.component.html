@@ -1,0 +1,244 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <br>
+  <h1 class="page-header">Review Feed</h1>
+  <hr>
+
+  <!-- Custom Success/Error Message -->
+  <div class="row show-hide-message" *ngIf="message && newPost">
+    <div [ngClass]="messageClass">
+      {{ message }}
+    </div>
+  </div>
+
+  <!-- New Post Button -->
+  <div class="row buttons">
+
+    <button type="button" name="button" class="btn btn-success mr-2"
+      *ngIf="!newPost" (click)="newReviewForm()">New Post</button>
+
+    <!-- Reload Button -->
+    <button [disabled]="loadingReviews" type="button" name="button"
+      class="btn btn-primary ml-2" *ngIf="!newPost" (click)="reloadReviews()">
+      <i class="fas fa-redo"></i>
+    </button>
+  </div>
+
+
+  <form [formGroup]="form" name="reviewForm" (submit)="onReviewSubmit()"
+    *ngIf="newPost">
+    <!-- Title Input -->
+    <div class="form-group">
+      <!-- <label for="title">Title</label> -->
+      <div [ngClass]="{'has-success': form.controls.title.valid, 'has-error': form.controls.title.touched && form.controls.title.errors}">
+        <!-- Title Input -->
+        <input type="text" name="title" class="form-control"
+          placeholder="Enter title here" autocomplete="off"
+          formControlName="title" />
+        <!-- Validation -->
+        <!-- <ul class="help-block"> -->
+        <div class="alert alert-danger" *ngIf="form.controls.title.touched && form.controls.title.errors?.required">
+          Title field is required.
+        </div>
+        <div class="alert alert-danger" *ngIf="(form.controls.title.touched && form.controls.title.errors?.minlength) || (form.controls.title.touched && form.controls.title.errors?.maxlength)">
+          Max length: 50, Min length: 5
+        </div>
+        <!-- <div class="alert alert-danger" *ngIf="form.controls.title.touched && form.controls.title.errors?.alphaNumericValidation">
+          Must be a letter or number
+        </div> -->
+        <!-- </ul> -->
+      </div>
+    </div>
+
+    <!-- <div *ngIf="password.touched && password.errors">
+        <div class="alert alert-danger" *ngIf="password.errors.required">
+            Password is required
+        </div>
+        <div class="alert alert-danger" *ngIf="password.errors.minlength">
+            Password must be at least 4 characters long
+        </div>
+    </div> -->
+
+    <!-- Body Input -->
+    <div class="form-group">
+      <!-- <label for="body"></label> -->
+      <div [ngClass]="{'has-success': form.controls.body.valid, 'has-error': form.controls.body.touched && form.controls.body.errors}">
+        <!-- Body Input -->
+        <textarea name="body" rows="8" cols="80" placeholder="Create your post here..."
+          class="form-control" formControlName="body"></textarea>
+        <!-- Validation -->
+        <div class="alert alert-danger" *ngIf="form.controls.body.touched && form.controls.body.errors?.required">This field is required.</div>
+        <div class="alert alert-danger" *ngIf="(form.controls.body.touched && form.controls.body.errors?.minlength) || (form.controls.body.touched && form.controls.body.errors?.maxlength)">Max length: 500, Min length: 5</div>
+      </div>
+    </div>
+
+    <!-- Go Back Button -->
+    <button [disabled]="processing" type="button" name="button"
+      (click)="goBack()" class="btn btn-success mr-2">Go Back</button>
+    <!-- Submit Button -->
+    <button [disabled]="processing || !form.valid" type="submit"
+      name="button" class="btn btn-outline-success">Submit</button>
+
+  </form>
+  <!-- New Blog Form -->
+
+  <!-- Panel Start -->
+  <div *ngIf="!newPost" class="container">
+    <div class="container">
+      <div class="row mb-5">
+        <!-- Panel Outer Layer -->
+        <div class="col-md-6 mx-auto my-2" *ngFor="let review of reviewPosts">
+          <div class="card main-card-body">
+            <!-- Panel Title -->
+            <div class="card-body">
+              <h3 class="card-title">
+                <span>{{ review.title }}</span>
+              </h3>
+
+              <!-- Panel Body -->
+              <p>
+                <strong>Posted by: </strong>{{ review.createdBy
+                }}
+                <span>
+
+                </span>
+              </p>
+              <div class="card">
+                <div class="card-body">
+                  {{ review.body }}
+                </div>
+              </div>
+            </div>
+            <div>
+              <div *ngIf="username === review.createdBy">
+                <p>
+                  <i class="far fa-calendar-alt mr-2 ml-4"></i>
+                  <span class="mr-3">{{ review.createdAt | date:'MMM dd,
+                    yyyy' }} </span>
+                  <i class="fas fa-thumbs-up fa-lg mr-2"></i>
+                  <span class="mr-3">{{ review.likes }}</span>
+                  <i class="fas fa-thumbs-down fa-lg mr-2 review-dislike"></i>
+                  <span>{{ review.dislikes }}</span>
+                  <a [routerLink]="['/edit-review/', review._id]" *ngIf="username === review.createdBy">
+                    <button type="button" name="button" class="btn btn-sm btn-primary edit">Edit</button>
+                  </a>
+                  <a [routerLink]="['/delete-review/', review._id]" *ngIf="username === review.createdBy">
+                    <button type="button" name="button" class="btn btn-sm btn-outline-primary ml-2 delete">Delete</button>
+                  </a>
+                </p>
+
+              </div>
+            </div>
+            <!-- Panel Footer Start -->
+            <div class="panel-footer">
+              <!-- Likes Dropdown  -->
+              <div class="dropdown">
+                <!-- Like Button  1 > -1 -->
+                <button [disabled]="review.likedBy.indexOf(username) > -1"
+                  type="button" name="button" class="btn btn-lg ml-2"
+                  *ngIf="username !== review.createdBy"
+                  (click)="likeReview(review._id)">
+                  <i class="fas fa-thumbs-up fa-lg"></i>
+                  <!-- <span>{{ review.likes }}</span> -->
+                </button>
+                <!-- Dropdown Menu Items -->
+                <div class="dropdown-content">
+                  <a [routerLink]="['/user/', liker]" *ngFor="let liker of review.likedBy">{{ liker }}</a>
+                </div>
+              </div>
+
+              <!-- Dislikes Dropdown  -->
+              <div class="dropdown">
+                <!-- Dislike Button -->
+                <button [disabled]="review.dislikedBy.indexOf(username) > -1"
+                  type="button" name="button" class="btn btn-lg mt-2 dislike"
+                  *ngIf="username !== review.createdBy"
+                  (click)="dislikeReview(review._id)">
+                  <i class="fas fa-thumbs-down fa-lg"></i>
+                  <!-- <span>{{ review.dislikes }}</span> -->
+                </button>
+                <!-- Dropdown Menu Items -->
+                <div class="dropdown-content">
+                  <a [routerLink]="['/user/', disliker]" *ngFor="let disliker of review.dislikedBy">{{ disliker }}</a>
+                </div>
+              </div>
+
+            </div>
+            <!-- Panel Footer End -->
+
+            <!-- Post Comment Box: Start -->
+            <ul class="list-group mb-3 ml-1 mr-3">
+              <li class="list-group-item">
+                <button type="button" name="button" class="btn btn-sm btn-success"
+                  (click)="draftComment(review._id)"
+                  [disabled]="newComment.indexOf(review._id) > -1">Comment
+                </button>
+                <!-- Post Comment Button -->
+                <br />
+                <br />
+                <div *ngIf="newComment.indexOf(review._id) > -1">
+
+                  <!-- Form: Comment Form Start -->
+                  <form [formGroup]="commentForm">
+                    <!-- Textarea Input -->
+                    <textarea name="comment" rows="10" cols="30" class="form-control"
+                      formControlName="comment"></textarea>
+                    <!-- Validation -->
+                    <div [ngClass]="{'has-success': !commentForm.controls.comment.errors && commentForm.controls.comment.touched, 'has-error': commentForm.controls.comment.touched && commentForm.controls.comment.errors}">
+                      <ul class="help-block">
+                        <li *ngIf="commentForm.controls.comment.errors?.required && commentForm.controls.comment.touched">Comment field is required or
+                          cancel
+                        </li>
+                        <li *ngIf="(commentForm.controls.comment.errors?.maxlength && commentForm.controls.comment.dirty) ||(commentForm.controls.comment.errors?.minlength && commentForm.controls.comment.dirty)">
+                          Comment field exceeds 200 characters.
+                        </li>
+                      </ul>
+                    </div>
+                    <!-- Post Button -->
+                    <button [disabled]="!commentForm.valid || processing"
+                      type="submit" name="button" class="btn btn-sm btn-primary mr-2 mt-2"
+                      (click)="postComment(review._id)">Post</button>
+                    <!-- Cancel Button -->
+                    <button [disabled]="processing" type="button" name="button"
+                      class="btn btn-sm btn-outline-primary ml-2 mt-2"
+                      (click)="cancelSubmission(review._id)">Cancel</button>
+                  </form>
+                  <!-- Form: Comment Form End -->
+
+                </div>
+
+                <!-- Show Comments -->
+                <li *ngIf="enabledComments.indexOf(review._id) === -1 && review.comments.length > 0"
+                  class="list-group-item nmb-1 " style="list-style-type: none; cursor: pointer">
+                  <span (click)="expand(review._id)">
+                    Comments
+                    <i class="fas fa-chevron-down"></i>
+                  </span>
+                </li>
+
+                <!-- Hide Comments -->
+                <li *ngIf="enabledComments.indexOf(review._id) > -1"
+                  class="list-group-item nmb-2 mb-1">
+                  <span (click)="collapse(review._id)">
+                    Comments
+                    <i class="fas fa-chevron-up"></i>
+                  </span>
+                </li>
+
+                <!-- Comment -->
+                <div *ngIf="enabledComments.indexOf(review._id) > -1">
+                  <li *ngFor="let comment of review.comments" class="list-group-item mb-1">
+                    <strong>{{ comment.commentator }}: </strong>
+                    <span>{{ comment.comment }}</span>
+                  </li>
+                </div>
+            </ul>
+            <!-- Post Comment Box: End -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Panel End -->

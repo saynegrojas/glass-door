@@ -1,0 +1,74 @@
+.main {
+    height: 90vh;
+    background-color: rgb(239, 239, 240);
+}
+.mission-statement, h4 {
+    font-weight: 400;
+    line-height: 1.5;
+    margin: auto;
+    width: 58%;
+    padding: 0;
+}
+.mission {
+    height: 20vh;
+    background-color: rgb(239, 239, 240);;
+    margin-bottom: 0;
+}
+section, .require {
+    display: flex;
+    align-items: center;
+}
+hr.solid {
+    border: 3px solid rgb(91, 207, 91);
+    width: 90px;
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+}
+.require {
+    font-style: italic;
+    font-size: 1.2rem;
+    color:#7f7f7f;
+    margin-bottom: 0;
+    position: absolute;
+    left: 50%;
+    top: 19%;
+    transform: translate(-50%, -19%);
+}
+.submit-btn {
+    border-radius: 2px;
+}
+.input-section {
+    border-top: 3px solid rgb(1, 17, 88);
+    width: 40%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+.input-main {
+    height: 100%;
+    background-color: rgb(239, 239, 240);
+    margin: 0;
+    padding: 0;
+}
+.input-body {
+    padding: 40px 0px 15px 0px;
+}
+small {
+    color: #7f7f7f;    
+    font-size: 10px;
+}
+
+.policy, p {
+    color: #7f7f7f;
+    margin-bottom: -10px;
+    padding: 0px 15%;    
+}
+label {
+    color: #7f7f7f;
+    font-size: 12px;
+    line-height: 16px;
+}
+.pw, .email {
+    margin: auto;
+}

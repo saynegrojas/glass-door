@@ -1,0 +1,69 @@
+<div class="container">
+  <h1 class="page-header mt-2 ml-3">Delete Review</h1>
+</div>
+<!-- Custom Success/Error Message -->
+<div class="container">
+  <div class="row show-hide-message mb-3" *ngIf="message">
+    <div [ngClass]="messageClass">
+      {{ message }}
+    </div>
+  </div>
+
+  <!-- Modal Confirmation Window -->
+  <div class="col-md-6" *ngIf="foundReview">
+    <!-- Model Outer Layer -->
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <!-- Close Button -->
+        <!-- <button type="button" name="button" class="close" data-dismiss="modal">&times;</button> -->
+        <!-- Modal Title -->
+        <h4 class="text-center ml-auto mr-auto">Confirm Delete</h4>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body text-center">
+        <p>Are you sure you would like to delete this
+          review?
+        </p>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <!-- Yes Button -->
+        <button [disabled]="processing" type="button" name="button"
+          class="btn btn-success" (click)="deleteReview()">Confirm</button>
+        <!-- No Button -->
+        <a routerLink="/review">
+          <button [disabled]="processing" type="button" name="button"
+            class="btn btn-danger">Cancel</button>
+        </a>
+      </div>
+    </div>
+
+    <br />
+
+    <!-- Panel -->
+    <div class="panel panel-primary">
+      <!-- Panel Heading -->
+      <div class="panel-heading">
+        <!-- Panel Title -->
+        <h3 class="panel-title">{{ review.title }}</h3>
+      </div>
+
+      <!-- Panel Body -->
+      <div class="panel-body">
+        {{ review.body }}
+      </div>
+
+      <!-- Panel Footer -->
+      <div class="panel-footer">
+        <strong>Posted by: </strong> {{ review.createdBy }}
+        <br />
+        <strong>Date: </strong> {{ review.createdAt | date:'MMM
+        dd, yyyy' }}
+      </div>
+    </div>
+
+  </div>
+</div>

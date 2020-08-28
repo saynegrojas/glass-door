@@ -1,0 +1,89 @@
+<app-navbar></app-navbar>
+
+<div class="main">
+  <section class="mission">
+    <div class="container">
+      <div class="row ">
+        <div class="col-md-12 text-center mission-statement">
+          <h3>
+            Member Sign in
+          </h3>
+        </div>
+        <div class="col-md-12 text-center mt-3 policy">
+          <p>
+            By continuing, you agree to our Terms of Use and Privacy
+            Policy.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="input-main">
+    <div class="card input-section">
+      <div class="card-body input-body">
+        <form [formGroup]="form" (submit)="onLoginSubmit()">
+
+          <div class="form-row">
+            <!-- <div class="col-md-3"></div> -->
+            <div class="col-md-8 mb-3 mt-3 email">
+              <label for="username">Username</label>
+              <div [ngClass]="{'has-error': form.controls.username.errors && form.controls.username.touched, 'has-success': form.controls.username.valid && form.controls.username.dirty }">
+                <input class="form-control" type="text" name="username"
+                  formControlName="username" />
+                <div class="alert alert-danger" *ngIf="form.controls.username.errors?.required && form.controls.username.touched">Username field is required.</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-8 mb-3 pw">
+              <label for="password">Password</label>
+              <div [ngClass]="{'has-error': form.controls.password.errors && form.controls.password.touched, 'has-success': form.controls.password.valid && form.controls.password.dirty }">
+                <input class="form-control" type="password" name="password"
+                  formControlName="password" />
+                <div class="alert alert-danger" *ngIf="form.controls.password.errors?.required && form.controls.password.touched">Password field is required.</div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="row show-hide-message">
+            <div [ngClass]="messageClass">
+              {{ message }}
+            </div>
+          </div> -->
+          <div class="text-center mb-2 mt-3">
+            <input [disabled]="!form.valid || processing" class="btn btn-success col-md-3 submit-btn"
+              type="submit" value="Sign in" [routerLink]="['/review']">
+          </div>
+        </form>
+        <div class="text-center mb-5">
+          <p>
+            Need an account?
+            <a [routerLink]="['/register']">
+              Sign up!</a>
+          </p>
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
+  <!-- <div class="modal fade" id="addedModal" tabindex="-1"
+  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="card" [ngClass]="messageClass">
+        <div class="card-header text-center">
+          <h5 class="card-title" id="exampleModalLabel">{{ message }}</h5>
+        </div>
+
+        <div class="text-center modal-footer">
+          <div class="text-center">
+            <button type="button" class="btn btn-success" data-dismiss="modal"
+              >
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
